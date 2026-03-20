@@ -1,0 +1,428 @@
+/* =========================================
+   1. GLOBAL & BACKGROUND STYLES
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffebd0; /* Soft Peach Background */
+    overflow: hidden; /* Prevents scrollbars during animations */
+    font-family: 'Source Sans Pro', sans-serif;
+    transition: background 1.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   2. DARK ROOM & LIGHT SWITCH
+========================================= */
+#dark-room {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background: #111;
+    z-index: 1000;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    transition: opacity 1.5s ease, visibility 1.5s;
+}
+
+.switch-container {
+    text-align: center;
+}
+
+#light-switch {
+    width: 60px; 
+    height: 100px;
+    background: linear-gradient(145deg, #444, #222);
+    border: 4px solid #555;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255,255,255,0.1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#light-switch:active {
+    transform: translateY(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(145deg, #222, #444);
+}
+
+.switch-text {
+    color: #fff; 
+    font-size: 24px; 
+    font-family: 'Pacifico', cursive; 
+    margin-top: 25px;
+    letter-spacing: 2px;
+    animation: pulseText 2s infinite alternate;
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.5; text-shadow: 0 0 5px #fff; }
+    100% { opacity: 1; text-shadow: 0 0 20px #ffea00, 0 0 30px #ffea00; }
+}
+
+#main-content {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    height: 100vh; 
+    width: 100vw;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+
+/* =========================================
+   3. MASCOT (TEDDY BEAR)
+========================================= */
+#mascot {
+    position: absolute; 
+    bottom: 30px; 
+    left: -150px; /* Hidden initially */
+    z-index: 50;
+    display: flex; 
+    align-items: center;
+    transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mascot-emoji { 
+    font-size: 110px; /* Made the teddy bigger and cuter */
+    animation: walk 0.6s infinite alternate; 
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+}
+
+.mascot-dialogue {
+    background: #fff; 
+    border-radius: 20px; 
+    padding: 15px 20px; 
+    font-family: 'Pacifico', cursive;
+    color: #ff3f48; 
+    font-size: 20px; 
+    line-height: 1.4;
+    margin-left: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+    opacity: 0; 
+    transition: opacity 0.5s ease-in;
+    position: relative;
+    text-align: center;
+}
+
+.mascot-dialogue::before {
+    content: ''; 
+    position: absolute; 
+    left: -14px; 
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 15px 15px 15px 0; 
+    border-style: solid; 
+    border-color: transparent #fff transparent transparent;
+}
+
+@keyframes walk {
+    from { transform: translateY(0) rotate(-5deg); }
+    to { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* =========================================
+   4. LAYOUT WRAPPER & FLOOR LINE
+========================================= */
+.wrap {
+    height: 300px;
+    width: 800px;
+    position: relative;
+}
+
+.line {
+    height: 25px;
+    width: 100%;
+    background: #fff;
+    bottom: -25px;
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   5. GIFT BOX & TOGGLE ANIMATIONS
+========================================= */
+.gift {
+    position: absolute;
+    bottom: 0px;
+    width: 150px;
+    left: 170px; /* Positioned securely on the left */
+    z-index: 12;
+    height: 180px;
+    cursor: pointer;
+}
+
+/* Inside Card Styling */
+.giftcard {
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    padding: 15px 10px;
+    width: 130px;
+    font-size: 22px;
+    font-family: 'Pacifico', cursive;
+    color: #ff3f48;
+    left: 10px; /* Centered relative to the 150px box */
+    top: 80px; /* Hidden deep inside the box initially */
+    position: absolute;
+    line-height: 30px;
+    z-index: 5; /* Between back and front of the box */
+    text-align: center;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gift_top {
+    transition: all 0.6s ease-in-out;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 15; /* Top lid stays above everything */
+}
+
+/* Box Structure Shapes */
+.ribbon_right { width: 45px; height: 45px; border-radius: 100% 100% 100% 0px; box-shadow: 0px 0px 0px 10px #1495f1 inset; position: absolute; right: 30px; }
+.ribbon_left { width: 45px; height: 45px; border-radius: 100% 100% 0px 100%; box-shadow: 0px 0px 0px 10px #1aa8fc inset; position: absolute; left: 30px; }
+.gift_box_top { height: 28px; top: 45px; position: absolute; width: 150px; background: #ff7d6d; box-shadow: -75px 0px 0px #ff6259 inset; border-radius: 3px; }
+.gift_ribbon_center { width: 2px; bottom: 0px; position: absolute; right: 0; left: 0; margin: 0px auto; background: #1cadfe; height: 140px; border-right: 6px solid #28C9FF; border-left: 6px solid #28C9FF; z-index: 14; transition: all 0.4s ease; }
+.gift_ribbon_left { height: 55px; width: 15px; left: 15px; position: absolute; background: #28c9ff; top: 40px; z-index: 16; transition: all 0.4s ease; }
+.gift_ribbon_left:after { border-width: 9px; border-style: solid; border-color: transparent; border-bottom-color: #ff8168; position: absolute; content: ""; bottom: 0px; }
+.gift_box_bottom { background: #ff8168; bottom: 0px; height: 102px; overflow: hidden; right: 7px; position: absolute; width: 136px; box-shadow: -70px 0px 0px #fe6d68 inset; border-radius: 0 0 5px 5px; z-index: 13; }
+.gift_box_bottom_top { height: 5px; width: 136px; right: 7px; position: absolute; bottom: 102px; background: #dd4b4c; z-index: 13; transition: opacity 0.3s; }
+.gift_box_bottom_ribbon { position: absolute; right: -25px; height: 12px; width: 110px; transform: rotate(45deg); background: #ff4149; }
+
+#ribbon1 { top: -15px; } #ribbon2 { top: 20px; } #ribbon3 { top: 55px; } #ribbon4 { top: 90px; }
+
+/* === JS TOGGLE CLASSES (.open) === */
+.gift.open .gift_top {
+    top: -120px; /* Lid flies high */
+    opacity: 0; /* Fades out smoothly */
+}
+.gift.open .gift_ribbon_left, .gift.open .gift_ribbon_center {
+    height: 30px; /* Ribbons shrink nicely */
+}
+.gift.open .gift_box_bottom_top {
+    opacity: 0; 
+}
+.gift.open .giftcard {
+    top: -55px; /* Letter pops up clearly visible above the box */
+    opacity: 1;
+    z-index: 20;
+    transform: scale(1.1); /* Slight zoom for emphasis */
+}
+
+/* =========================================
+   6. CAKE & PERFECT AGE ALIGNMENT (18)
+========================================= */
+.cake {
+    position: absolute;
+    bottom: 0px;
+    width: 330px;
+    right: 150px; /* Positioned securely on the right */
+    height: 240px;
+}
+
+/* Flexbox Age Structure (Perfect Alignment) */
+.birthday_age {
+    position: absolute;
+    top: -15px;
+    /* Sirf yahan change kiya hai */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 25;
+}
+
+.age_digit {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Ensures flame is exactly center of the number */
+}
+
+.age_digit span {
+    font-family: 'Pacifico', cursive; 
+    font-size: 65px; 
+    color: #ff9101;
+    text-shadow: 3px 3px 0px #fff, -2px -2px 0px #c14500; 
+    font-weight: bold; 
+    line-height: 1;
+}
+
+.age_flame {
+    height: 18px; 
+    width: 9px; 
+    border-radius: 100%; 
+    background: #ffd215;
+    position: absolute; 
+    top: -15px; /* Fixed distance above the text */
+    animation: fire 0.6s infinite alternate; 
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffea00;
+}
+
+@keyframes fire {
+    0% { transform: scaleY(1); background: #fdd214; }
+    100% { transform: scaleY(1.3); background: #ffc617; box-shadow: 0 0 15px #ff9101; }
+}
+
+/* Cake Base & Tiers */
+.cake_bottom { position: absolute; width: 330px; height: 5px; bottom: 0px; background: #9dc5c4; border-top: 2px solid #e6e7e9; border-radius: 2px; }
+.cake_bottom2 { position: absolute; width: 320px; bottom: 7px; background: #cd7a1c; height: 22px; right: 5px; border-radius: 3px 3px 0px 0px; left: 5px; box-shadow: -160px 0px 0px #ad631c inset; }
+.cake_bottom3 { box-shadow: 0px -3px 0px #fddbea, -155px 0px 0px #5a4027 inset; height: 52px; border-top: 5px solid #ff7ebe; background: #744c28; position: absolute; width: 310px; bottom: 29px; right: 10px; border-radius: 5px 5px 0px 0px; left: 10px; }
+.cake_top1 { box-shadow: -115px 0px 0px #ff9201 inset; height: 46px; background: #ffb009; position: absolute; width: 230px; bottom: 89px; right: 50px; border-radius: 5px 5px 0px 0px; left: 50px; border-bottom: 3px solid #c14500; }
+.cake_top2 { box-shadow: -70px 0px 0px #5b3f29 inset; height: 52px; background: #744c28; position: absolute; width: 140px; bottom: 138px; border-radius: 5px 5px 0px 0px; left: 0px; right: 0px; margin: 0px auto; }
+
+/* Cake Cherries */
+.cherry { width: 15px; top: -15px; height: 15px; border-radius: 100%; background: #fff; position: absolute; box-shadow: -2px -1px 0px 6px #ff4d59 inset; z-index: 10; }
+#cherry1 { left: 20px; } #cherry2 { left: 64px; } #cherry3 { left: 108px; } #cherry4 { right: 64px; } #cherry5 { right: 20px; }
+
+/* Cake Circles & Lines */
+.cake_circle { height: 56px; width: 56px; border-radius: 100%; box-shadow: 0px 0px 0px 12px #ffebc8 inset; top: -30px; z-index: 9; position: absolute; }
+.circles { position: absolute; height: 30px; width: 100%; overflow: hidden; top: 0px; }
+#circle1 { left: -1px; } #circle2 { left: 43px; } #circle3 { left: 87px; } #circle4 { right: 43px; } #circle5 { right: -1px; }
+
+/* Cake Creams (Top Tier) */
+.cake_top1_creams { height: 18px; border-radius: 5px; background: #f24282; position: absolute; top: 0px; width: 100%; }
+.cake_top1_cream1 { position: absolute; left: -3px; height: 25px; width: 15px; border-radius: 9px; background: #f14380; }
+.cake_top1_cream2 { position: absolute; left: 12px; height: 25px; width: 10px; border-radius: 9px; background: #744c28; top: 10px; }
+.cake_top1_cream3 { position: absolute; left: 22px; height: 23px; width: 10px; border-radius: 9px; background: #f14380; }
+.cake_top1_cream4 { position: absolute; left: 32px; height: 25px; width: 12px; border-radius: 9px; background: #744c28; top: 13px; }
+.cake_top1_cream5 { position: absolute; left: 44px; height: 30px; width: 13px; border-radius: 9px; background: #f14380; }
+.cake_top1_cream6 { position: absolute; left: 57px; height: 25px; width: 13px; border-radius: 9px; background: #744c28; top: 9px; }
+.cake_top1_cream7 { position: absolute; right: -3px; height: 22px; width: 8px; border-radius: 9px; background: #f14380; }
+.cake_top1_cream8 { position: absolute; right: 5px; height: 25px; width: 10px; border-radius: 9px; background: #5b3f29; top: 8px; }
+.cake_top1_cream9 { position: absolute; right: 15px; height: 31px; width: 10px; border-radius: 9px; background: #f14380; }
+.cake_top1_cream10 { position: absolute; right: 25px; height: 15px; width: 10px; border-radius: 9px; background: #5b3f29; top: 13px; }
+.cake_top1_cream11 { position: absolute; right: 35px; height: 24px; width: 13px; border-radius: 9px; background: #f14380; }
+.cake_top1_cream12 { position: absolute; right: 48px; height: 15px; width: 12px; border-radius: 9px; background: #5b3f29; top: 10px; }
+.cake_top1_cream13 { position: absolute; right: 60px; height: 26px; width: 10px; border-radius: 9px; background: #f14380; }
+
+/* Cake Creams (Middle Tier) */
+.cake_bottom3_creams { height: 22px; border-radius: 5px; background: #ff7fbf; position: absolute; top: -5px; width: 100%; }
+.cake_bottom3_cream1 { position: absolute; left: -3px; height: 35px; width: 18px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream2 { position: absolute; left: 15px; height: 24px; width: 15px; border-radius: 9px; top: 12px; background: #744c28; }
+.cake_bottom3_cream3 { position: absolute; left: 30px; height: 38px; width: 10px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream4 { position: absolute; left: 40px; height: 24px; width: 15px; border-radius: 9px; top: 15px; background: #744c28; }
+.cake_bottom3_cream5 { position: absolute; left: 55px; height: 30px; width: 15px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream6 { position: absolute; left: 70px; height: 20px; width: 12px; border-radius: 100px; top: 17px; background: #744c28; }
+.cake_bottom3_cream7 { position: absolute; left: 82px; height: 40px; width: 18px; border-radius: 100px; background: #ff7fbf; }
+.cake_bottom3_cream8 { position: absolute; left: 100px; height: 20px; width: 22px; border-radius: 100px; top: 10px; background: #744c28; }
+.cake_bottom3_cream9 { position: absolute; left: 122px; height: 67px; width: 24px; border-radius: 100px; background: #ff7fbf; z-index: 3; }
+.cake_bottom3_cream10 { position: absolute; left: 146px; height: 20px; width: 9px; border-radius: 100px; top: 16px; background: #744c28; }
+.cake_bottom3_cream11 { position: absolute; right: 140px; height: 37px; width: 15px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream12 { position: absolute; right: 128px; height: 23px; width: 12px; border-radius: 100px; top: 13px; background: #5b3f27; }
+.cake_bottom3_cream13 { position: absolute; left: 116px; height: 59px; width: 36px; border-radius: 100px; background: #744c28; z-index: 2; top: 15px; }
+.cake_bottom3_cream14 { position: absolute; right: 108px; height: 64px; width: 20px; border-radius: 9px; background: #ff7fbf; z-index: 3; }
+.cake_bottom3_cream15 { position: absolute; right: 102px; height: 55px; width: 31px; border-radius: 100px; background: #5a4027; z-index: 2; top: 15px; }
+.cake_bottom3_cream16 { position: absolute; right: 93px; height: 23px; width: 15px; border-radius: 100px; top: 8px; background: #5b3f27; }
+.cake_bottom3_cream17 { position: absolute; right: 78px; height: 47px; width: 15px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream18 { position: absolute; right: 70px; height: 23px; width: 8px; border-radius: 100px; top: 16px; background: #5b3f27; }
+.cake_bottom3_cream19 { position: absolute; right: 58px; height: 30px; width: 12px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream20 { position: absolute; right: 43px; height: 23px; width: 15px; border-radius: 100px; top: 8px; background: #5b3f27; }
+.cake_bottom3_cream21 { position: absolute; right: 28px; height: 38px; width: 15px; border-radius: 9px; background: #ff7fbf; }
+.cake_bottom3_cream22 { position: absolute; right: 10px; height: 23px; width: 18px; border-radius: 100px; top: 14px; background: #5b3f27; }
+.cake_bottom3_cream23 { position: absolute; right: -3px; height: 30px; width: 13px; border-radius: 9px; background: #ff7fbf; }
+
+/* Cake Creams (Bottom Tier) */
+.cake_bottom1_creams { height: 10px; position: absolute; bottom: 0px; width: 100%; }
+.cake_bottom1_cream1 { position: absolute; left: 56px; height: 6px; width: 14px; border-radius: 20px 20px 0px 0px; background: #5a4027; bottom: 0px; }
+.cake_bottom1_cream2 { position: absolute; left: 115px; height: 5px; width: 10px; border-radius: 20px 20px 0px 0px; background: #5a4027; bottom: 0px; }
+.cake_bottom1_cream3 { position: absolute; right: 33px; height: 8px; width: 14px; border-radius: 20px 20px 0px 0px; background: #744c29; bottom: 0px; }
+.cake_bottom1_cream4 { position: absolute; right: 58px; height: 5px; width: 11px; border-radius: 20px 20px 0px 0px; background: #744c29; bottom: 0px; }
+
+/* =========================================
+   7. POLAROID GALLERY (EMOJI BASED)
+========================================= */
+#polaroid-gallery { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    pointer-events: none; /* Let clicks pass through to gift */
+    z-index: 30; 
+}
+
+.polaroid {
+    position: absolute; 
+    background: #fff; 
+    padding: 15px 15px 40px 15px; /* Thicker bottom border for polaroid effect */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.1); 
+    pointer-events: auto; /* Make pictures clickable/hoverable */
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; 
+    cursor: pointer;
+    top: 50%; 
+    left: 50%; 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.1); /* Starts tiny and hidden in center */
+    border-radius: 4px;
+}
+
+.polaroid-pic {
+    width: 140px;
+    height: 140px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px; /* Big emoji */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.polaroid span {
+    display: block; 
+    text-align: center; 
+    font-family: 'Pacifico', cursive; 
+    color: #444; 
+    font-size: 20px;
+    margin-top: 15px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+}
+
+.polaroid:hover { 
+    z-index: 100 !important; 
+    transform: scale(1.15) !important; /* Zooms in nicely on hover */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+/* =========================================
+   8. DYNAMIC CANDIES & CHOCOLATES
+========================================= */
+.candy { 
+    position: fixed; /* Ensures they fall across the entire screen */
+    font-size: 35px; 
+    top: -50px; 
+    z-index: 45; 
+    pointer-events: none; /* Can't click them */
+    animation: spin 3s linear infinite; 
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+}
+
+@keyframes spin { 
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); } 
+}
