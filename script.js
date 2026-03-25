@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             giftBox.classList.remove("open"); // Box wapas band hoga
             
             hidePolaroids();
-            dialogue.innerHTML = "Happy Birthday Jiya! <br> Click the gift box! 🎁";
+            dialogue.innerHTML = "Happy Birthday Ankita! <br> Click the gift box! 🎁";
             
             // Agar pehle wali candies chal rahi hain toh unhe turant rok do
             clearInterval(candyInterval); 
