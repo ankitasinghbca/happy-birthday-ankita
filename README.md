@@ -1,4 +1,4 @@
-# 🎉 Happy Birthday Jiya - Interactive Web Experience 🎂
+# 🎉 Happy Birthday Ankita - Interactive Web Experience 🎂
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -22,7 +22,7 @@ Yeh project DOM manipulation, CSS Keyframes, CSS Flexbox, aur external JavaScrip
 
 * 💡 **Interactive Dark Room Intro:** Page start hote hi poora dark hota hai, sirf ek glowing "Light Switch" dikhta hai. Switch par click karte hi smooth fade-out animation ke sath lights on hoti hain.
 * 🧸 **Animated Teddy Mascot:** Lights on hote hi screen ke left side se ek cute animated Teddy bear chalte hue aata hai aur instructions deta hai.
-* 🎁 **Clickable Magic Gift Box:** Center me ek beautifully CSS se design kiya gaya 3D-looking gift box hai. Click karne par lid hawa me udta hai, aur andar se ek personalized "Happy Birthday Jiya" ka popup card smoothly bahar aata hai.
+* 🎁 **Clickable Magic Gift Box:** Center me ek beautifully CSS se design kiya gaya 3D-looking gift box hai. Click karne par lid hawa me udta hai, aur andar se ek personalized "Happy Birthday Ankita" ka popup card smoothly bahar aata hai.
 * 🎊 **Confetti Blast:** Box khulte hi canvas-confetti library ka use karke ek realistic aur colorful confetti blast hota hai.
 * 🍬 **Dynamic Falling Candies:** Gift khulte hi top screen se random candies aur chocolates girne lagti hain. Exact 5 seconds baad naye candies aana band ho jate hain taaki screen clean rahe.
 * 📸 **Floating Polaroid Gallery:** Surprise ke taur par screen par 3 beautiful polaroid frames pop-up hote hain jo hover karne par zoom aur rotate hote hain.
@@ -40,7 +40,7 @@ Yeh project DOM manipulation, CSS Keyframes, CSS Flexbox, aur external JavaScrip
 
 ## 🚀 How to Run Locally
 
-1. Is repository ko clone karein: `git clone https://github.com/PankajTiwari-Art/happy-birthday-jiya.git`
+1. Is repository ko clone karein: `git clone https://github.com/PankajTiwari-Art/happy-birthday-Ankita.git`
 2. Apne computer par folder ko open karein.
 3. Kisi bhi modern web browser (Chrome, Firefox, Edge) me `index.html` file par double click karke open karein.
 
