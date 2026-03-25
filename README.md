@@ -6,7 +6,7 @@
 
 Ek highly interactive, fully animated, aur responsive "Happy Birthday" greeting web application. Yeh project simple static greeting cards ko ek step aage le jaakar ek **mini-game/interactive experience** me badal deta hai.
 
-🔗 **Live Demo:** [Click Here to View the Magic!](https://pankajtiwari-art.github.io/happy-birthday-jiya/)
+🔗 **Live Demo:** [Click Here to View the Magic!](https://ankitasingh2005.github.io/happy-birthday-ankita/)
 
 ---
 
@@ -40,7 +40,7 @@ Yeh project DOM manipulation, CSS Keyframes, CSS Flexbox, aur external JavaScrip
 
 ## 🚀 How to Run Locally
 
-1. Is repository ko clone karein: `git clone https://github.com/PankajTiwari-Art/happy-birthday-Ankita.git`
+1. Is repository ko clone karein: `git clone https://ankitasingh2005.github.io/happy-birthday-ankita.git`
 2. Apne computer par folder ko open karein.
 3. Kisi bhi modern web browser (Chrome, Firefox, Edge) me `index.html` file par double click karke open karein.
 
@@ -48,10 +48,7 @@ Yeh project DOM manipulation, CSS Keyframes, CSS Flexbox, aur external JavaScrip
 
 ## 👨‍💻 About the Developer
 
-**Pankaj Tiwari**
-Ek developer jinhone multiple interactive games aur complex websites design aur develop ki hain. Yeh project frontend animations, creative logic building, aur DOM handling ko showcase karne ka ek badiya example hai.
-
-* **GitHub:** [@PankajTiwari-Art](https://github.com/PankajTiwari-Art)
+**Ankita Kumari Singh**
 
 ---
 *Made with ❤️ and a lot of Code!*
